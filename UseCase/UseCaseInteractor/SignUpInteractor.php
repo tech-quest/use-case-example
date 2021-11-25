@@ -1,4 +1,5 @@
 <?php
+require_once(__DIR__ . '/../../UseCase/UseCaseOutput/SignUpOutput.php');
 
 final class SignUpInteractor
 {
@@ -15,7 +16,7 @@ final class SignUpInteractor
   public function handler(): SignUpOutput
   {
     $userDao = new UserDao();
-    $user = $userDao->findByMail($this->useCaseInput->email());
+    $user = $userDao->findByEmail($this->useCaseInput->email());
 
     if (!is_null($user)) {
       return new SignUpOutput(false, self::ALLREADY_EXISTS_MESSAGE);

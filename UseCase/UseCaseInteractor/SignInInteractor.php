@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once(__DIR__ . '/../../UseCase/UseCaseOutput/SignInOutput.php');
 
 final class SignInInteractor
 {
@@ -33,7 +34,7 @@ final class SignInInteractor
 
     private function findUser(): array
     {
-        return $this->userDao->findByMail($this->input->email());
+        return $this->userDao->findByEmail($this->input->email());
     }
 
     private function notExistsUser(?array $user): bool
